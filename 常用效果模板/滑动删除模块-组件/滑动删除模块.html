@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <title>左滑动删除模块</title>
+</head>
+<style>
+  body,
+  ul,
+  li,
+  p {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  body{
+    background:#F5F5F5;
+  }
+  img {
+    width: 100%;
+  }
+  div{
+    box-sizing: border-box;
+  }
+  .cart-container {
+    padding: 0 18px;
+    margin: 12px 0;
+    background: #fff;
+  }
+  .cart-container .cart-list .cart-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #ccc;
+  }
+  .cart-container .cart-list .cart-item .slide-box {
+    display: flex;
+    overflow: hidden;
+  }
+  .cart-container .cart-list .cart-item .slide-box .cart-content {
+    flex: 1 0 100%;
+    display: flex;
+  }
+  .cart-container .cart-list .cart-item .slide-box .cart-content .cart-text p {
+    margin-bottom: 6px;
+  }
+  .cart-container .cart-list .cart-item .slide-box .cart-content .cart-text p:last-child {
+    margin: 0;
+  }
+  .cart-container .cart-list .cart-item .slide-box .cart-content .cart-img {
+    width: 80px;
+    margin-right: 12px;
+  }
+  .cart-container .cart-list .cart-item .slide-box .cart-content .price {
+    font-size: 20px;
+    color: red;
+  }
+  .cart-container .cart-list .cart-item .slide-box .cart-delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left:18px;
+    width: 60px;
+    flex: none;
+    font-weight: bold;
+    background: red;
+    color: #fff;
+  }
+  .cart-container .cart-list .cart-item:last-child {
+    border: none;
+  }
+
+</style>
+<body>
+<div id="app">
+  <div class="cart-container">
+    <ul class="cart-list">
+      <li class="cart-item">
+        <div class="slide-box"
+             :style="slideStyle">
+          <div class="cart-content" ref="slideBox"
+               @touchstart="touchStart"
+               @touchmove="touchMove"
+               @touchend="touchEnd">
+            <div class="cart-img">
+              <img src="pinpai.jpg" alt="">
+            </div>
+            <div class="cart-text">
+              <p>商品标题内容</p>
+              <p>x56件</p>
+              <p class="price">¥56</p>
+            </div>
+          </div>
+          <div class="cart-delete" @click="deleteItem" ref="deleteWidth">
+            删除
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+          startX:0,//开始触摸的位置
+          moveX:0,//滑动时的位置
+          endX:0,//结束触摸的位置
+          disX:0,//移动距离
+          slideStyle: '',//滑动时的效果,使用v-bind:style="deleteSlider"
+        },
+        methods: {
+          touchStart (e) {
+            ev = e || event;
+            ev.preventDefault();
+            if (ev.touches.length === 1) {
+              //tounches类数组，等于1时表示此时有只有一只手指在触摸屏幕
+              this.startX = ev.touches[0].clientX;// 记录开始位置
+            }
+          },
+          touchMove (e) {
+            ev = e || event;
+            ev.preventDefault();
+            if (ev.touches.length === 1) {
+              // 左滑的距离
+              this.moveX = ev.touches[0].clientX - this.startX
+              console.log(this.moveX);
+              if (this.moveX < 0) {
+                this.slideStyle = {
+                  'overflow': 'visible',
+                  'transform': 'translate(' + this.moveX + 'px)'
+                }
+              }
+            }
+          },
+          touchEnd (e) {
+            ev = e || event;
+            ev.preventDefault();
+            // 删除元素的宽度
+            let deleteWidth = -this.$refs.deleteWidth.offsetWidth
+            if (this.moveX <= -100) {
+              this.slideStyle = {
+                'overflow': 'visible',
+                'transform': 'translate(' + deleteWidth + 'px)'
+              }
+            }else{
+              this.slideStyle = ''
+            }
+          },
+          deleteItem () {
+            confirm('确定删除')
+          }
+        }
+    })
+</script>
+</body>
+</html>

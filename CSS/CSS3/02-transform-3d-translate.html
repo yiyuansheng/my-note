@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+	<style>
+		#container{
+			width:800px;
+			height:400px;
+			border:2px solid #000;
+			margin:100px auto;
+			position:relative;
+		}
+		#container div{
+			width:200px;
+			height:200px;
+			
+			position:absolute;
+			top:0px;
+			right:0px;
+			bottom:0px;
+			left:0px;
+			margin:auto;
+		}
+		#container div:nth-child(1){
+			background:red;
+			transform:translateZ(200px);
+		}
+		#container div:nth-child(2){
+			background:green;
+		}
+		#container div:nth-child(3){
+			background:blue;
+			transform:translateZ(-200px);
+		}
+
+		#stage{
+			perspective:1000px;
+		}
+		#container{
+			transform:rotateX(-20deg);
+			/*处理子元素的3D位置*/
+			transform-style:preserve-3d;
+		}
+	</style>
+ </head>
+ <body>
+	 <div id="stage">
+		<div id="container">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	 </div>
+ </body>
+</html>

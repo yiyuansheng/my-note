@@ -1,0 +1,88 @@
+body,
+ol,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+dt,
+dl,
+dd,
+p {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-size: 16px;
+}
+ul,
+ol {
+  list-style: none;
+}
+button,
+input {
+  border: none;
+}
+img {
+  width: 100%;
+  vertical-align: top;
+}
+.clear {
+  clear: both;
+}
+.container {
+  padding: 18px;
+  background: #EEF1F6;
+}
+.container #persons {
+  width: 100%;
+  height: 400px;
+}
+.container .header-total > div {
+  float: left;
+  box-sizing: border-box;
+  margin-right: 1.33%;
+  width: 24%;
+  height: 120px;
+  padding: 18px;
+  text-align: right;
+  color: #fff;
+}
+.container .header-total > div .number {
+  margin-top: 14px;
+  line-height: 36px;
+  font-size: 30px;
+}
+.container .header-total > div .text {
+  line-height: 20px ;
+}
+.container .header-total .non-payment {
+  background: url(tongji_1.png) no-repeat left bottom #3698DA;
+}
+.container .header-total .have-paid {
+  background: url(tongji_2.png) no-repeat left bottom #E74F5B;
+}
+.container .header-total .new-user {
+  background: url(tongji_3.png) no-repeat left bottom #32C6D4;
+}
+.container .header-total .login-Num {
+  margin-right: 0;
+  background: url(tongji_4.png) no-repeat left bottom #8D44AF;
+}
+.container .section {
+  padding: 22px 0 0;
+}
+.container .section > div {
+  float: left;
+  width: 49.3%;
+  height: 500px;
+  padding-top: 12px;
+  background: #fff;
+}
+.container .section #loginTimes,
+.container .section #salesVolume {
+  margin-right: 1.33%;
+}

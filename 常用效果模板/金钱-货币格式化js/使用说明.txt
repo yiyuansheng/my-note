@@ -1,0 +1,37 @@
+1、文档：http://www.jq22.com/demo/accounting.js-master/
+2、github:  https://github.com/wjcrowcroft/accounting.js
+3、
+
+ //  金钱格式化
+            Vue.filter('convertMoney', value => {
+                if (value < 0) {
+                    return accounting.formatMoney(-value, '-¥');
+                }
+                return accounting.formatMoney(value, '¥');
+            });
+            // 正数金钱加“-¥”
+            Vue.filter('minusConvertMoney', value => accounting.formatMoney(value, '-¥'));
+            // 时间格式化yymmdd hh:mm
+
+
+// Default usage:
+
+accounting.formatMoney(12345678); // $12,345,678.00
+
+
+
+// European formatting (custom symbol and separators), could also use options object as second param:
+
+accounting.formatMoney(4999.99, "€", 2, ".", ","); // €4.999,99
+
+
+
+// Negative values are formatted nicely, too:
+
+accounting.formatMoney(-500000, "£ ", 0); // £ -500,000
+
+
+
+// Simple `format` string allows control of symbol position [%v = value, %s = symbol]:
+
+accounting.formatMoney(5318008, { symbol: "GBP",  format: "%v %s" }); // 5,318,008.00 GBP

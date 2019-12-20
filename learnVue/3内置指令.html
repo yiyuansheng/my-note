@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue</title>
+</head>
+<body>
+<div id="app">
+    <template v-if="status === 1">
+      <p>1</p>
+      <h1>2</h1>
+    </template>
+  <template v-else>
+    <div>3</div>
+    <h2>4</h2>
+  </template>
+  <button @click="change">789</button>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            status:1
+        },
+      methods: {
+          change () {
+            if (this.status === 1) {
+              this.status = 2
+            }else {
+              this.status = 1
+            }
+          }
+      }
+    })
+</script>
+</body>
+</html>

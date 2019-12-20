@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app" v-cloak>
+  <tabs v-model="activeKey">
+    <pane label="标签1" name="1">1</pane>
+    <pane label="标签2" name="2">2</pane>
+    <pane label="标签3" name="3">3</pane>
+  </tabs>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script src="pane.js"></script>
+<script src="tabs.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+          activeKey: 1
+        }
+    })
+</script>
+</body>
+</html>

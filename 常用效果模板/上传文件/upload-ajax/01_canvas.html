@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body{
+      text-align: center;
+    }
+    canvas{
+      background:#ddd;
+    }
+  </style>
+</head>
+<body>
+ <canvas id="c3" width="500" height="400"></canvas>
+ <script>
+  var ctx = c3.getContext("2d");
+  ctx.fillStyle = "#f00";
+  ctx.fillRect(0,0,100,80);
+  ctx.fillRect(400,320,100,80);
+  ctx.fillRect(0,320,100,80);
+  ctx.fillRect(400,0,100,80);
+  ctx.fillRect(500/2-50,400/2-40,100,80);
+
+ </script>
+</body>
+</html>

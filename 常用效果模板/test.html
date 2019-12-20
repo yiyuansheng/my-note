@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<body>
+<div id="box"></div>
+<p href="" id="a">展现</p>
+<!--<script src="data.city.js"></script>-->
+<script src="initCity.js"></script>
+<script>
+  cityPick.initCity('#box')
+  $('#a').click(function(){
+    // console.log(cityPick.selected)
+    if(cityPick.selected.y){
+      console.log(cityPick.selected)
+    }
+  })
+</script>
+</body>
+</html>

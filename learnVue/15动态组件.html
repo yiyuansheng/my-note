@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue</title>
+</head>
+<body>
+<div id="app">
+    <component :is="showComponent"></component>
+    <button @click="handelChange('A')">切换到A</button>
+    <button @click="handelChange('B')">切换到B</button>
+    <button @click="handelChange('C')">切换到C</button>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+          showComponent: "comA"
+        },
+        components: {
+          comA: {template: '<div>comA</div>'},
+          comB: {template: '<div>comB</div>'},
+          comC: {template: '<div>comC</div>'}
+        },
+        methods: {
+          handelChange (component) {
+            this.showComponent = 'com' + component
+          }
+        }
+    })
+</script>
+</body>
+</html>

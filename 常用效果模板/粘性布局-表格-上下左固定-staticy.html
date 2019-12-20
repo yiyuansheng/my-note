@@ -1,0 +1,524 @@
+<!-- 实现表格头部和底部行固定，左侧第一栏固定，其它内容滚动的粘性布局 -->
+<!DOCTYPE>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+  </head>
+  <style>
+    body,ul,li{padding: 0; margin: 0;}
+    li{list-style: none;}
+    .df{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    /*表格列表*/
+    .table-box{
+      position: relative;
+    }
+    .table-header, .table-body, .table-footer{
+      width: max-content;
+    }
+    .table-footer{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+    .th-fixed{
+      position: sticky;
+      top:0;
+      left: 0;
+      font-weight: bold;
+      color: #fff;
+      z-index: 1;
+    }
+    .th-fixed >li{background: red}
+    .td-fixed{
+      position: sticky;
+      top: 0;
+      left: 0;
+    }
+    .td-fixed >li{
+      background: pink;
+    }
+    li{
+      width: 50px;
+      padding: 8px;
+      flex-shrink: 0;
+      background: #fff;
+    }
+  </style>
+  <body>
+  <section class="table-box">
+    <!--列表标题-->
+    <ul class="df th-fixed table-header">
+      <li class="td-fixed">日期</li>
+      <li>标题</li>
+      <li>标题</li>
+      <li>标题</li>
+      <li>标题</li>
+      <li>标题</li>
+      <li>标题</li>
+      <li>标题</li>
+      <li>标题</li>
+    </ul>
+    <!--列表内容-->
+    <div class="df table-body">
+      <ul class="td-fixed">
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+        <li>固定列</li>
+      </ul>
+      <div>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul><ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+        <ul class="df">
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+          <li> 内容 </li>
+        </ul>
+      </div>
+    </div>
+    <ul class="df th-fixed table-footer">
+      <li class="td-fixed">统计</li>
+      <li>底部</li>
+      <li>底部</li>
+      <li>底部</li>
+      <li>底部</li>
+      <li>底部</li>
+      <li>底部</li>
+      <li>底部</li>
+      <li>底部</li>
+    </ul>
+  </section>
+  </body>
+</html>

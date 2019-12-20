@@ -1,0 +1,128 @@
+<!doctype html>
+<html >
+	<head>
+		<meta charset="UTF-8">
+		<meta name="Generator" content="">
+		<meta name="Author" content="">
+		<meta name="Keywords" content="">
+		<meta name="Description" content="">
+		<title></title>
+		<style>
+			@keyframes change{
+				0%{
+				transform-origin:center bottom;
+				transition:transform 60s linear;
+				transform:rotate(0deg);
+				}
+				50%{
+				transform-origin:center bottom;
+				transform:rotate(180deg);
+				}
+				100%{
+				transform-origin:center bottom;
+				transform:rotate(360deg);
+				}
+			}
+			p{margin:0;padding:0;}
+			#container{
+				border:2px solid #ccc;
+				width:400px;
+				height:400px;
+				margin:0 auto;
+				position:relative;
+				border-radius:50%;
+			}
+			div.radius{
+				width:20px;
+				height:20px;
+				border:1px solid black;
+				border-radius:50%;
+				background:#333;
+				position:absolute;
+				top:190px;
+				left:190px;
+				z-index:100;
+				
+			}
+			div.hour{
+				width:20px;
+				height:80px;
+				border:1px solid #333;
+				border-top-right-radius:50%;
+				border-top-left-radius:50%;
+				background-color:#aaa;
+				position:absolute;
+				top:119px;
+				left:190px;
+				animation:change 216000s linear infinite;
+			}
+			div.minute{
+				width:10px;
+				height:100px;
+				border:1px solid #666;
+				border-top-right-radius:50%;
+				border-top-left-radius:50%;
+				background-color:#ddd;
+				position:absolute;
+				top:99px;
+				left:195px;
+				animation:change 3600s linear infinite;
+			}
+			div.second{
+				width:4px;
+				height:150px;
+				border:1px solid #e4393c;
+				background-color:#EA8076;
+				border-top-right-radius:50%;
+				border-top-left-radius:50%;
+				position:absolute;
+				top:49px;
+				left:198px;
+				z-index:50;
+				animation:change 60s linear infinite;
+			}
+			/*#container:hover div.second{
+				transform-origin:center bottom;
+				transition:transform 60s linear;
+				transform:rotate(360deg);
+			}*/
+			#container p{
+				font-weight:bold;
+				font-size:42px;
+				float:left;
+			}
+			#container p.right{
+				position:absolute;
+				right:0;
+				top:176px;
+			}
+			#container p.left{
+				position:absolute;
+				left:0;
+				top:176px;
+			}
+			#container p.top{
+				position:absolute;
+				left:177px;
+				top:0px;
+			}
+			#container p.bottom{
+				position:absolute;
+				left:189px;
+				bottom:0px;
+			}
+		</style>
+	</head>
+ <body>
+	<div id="container">
+		<p class="top">12</p>
+		<p class="right">3</p>
+		<p class="bottom">6</p>
+		<p class="left">9</p>
+		<div class="radius"></div>
+		<div class="hour"></div>
+		<div class="minute"></div>
+		<div class="second"></div>
+	</div>
+ </body>
+</html>

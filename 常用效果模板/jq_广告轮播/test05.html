@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head> 
+<script src="jquery.js"></script>
+<style>
+.big_box{width:160px;height:220px;margin:auto;position:relative;border:solid red 3px;}
+.scroll_box{width:800px;overflow:hidden;position:absolute;left:-161px;}
+.scroll_box img{float:left;}
+</style>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div class="big_box">
+	<div class="scroll_box">
+		<img width="160" height="220" src="images/zl-01.jpg">
+		<img width="160" height="220" src="images/zl-02.jpg">
+		<img width="160" height="220" src="images/zl-03.jpg">
+		<img width="160" height="220" src="images/zl-04.jpg">
+		<img width="160" height="220" src="images/zl-05.jpg">
+    </div>
+</div>
+<input type="button" value="<<向左走"><input type="button" value="向右走>>">
+<script>
+/*动画变化函数*/
+function scrollImg(){
+	$(".scroll_box").animate({left:-320},1000,function(){
+		/*滚动框归位*/
+		$(".scroll_box").css({left:-160})
+		/*第一张插到第3张的后面*/
+		$(".scroll_box img:first").insertAfter(".scroll_box img:last");	
+	});
+}
+setInterval(scrollImg,2000);
+/*点按钮动*/
+$("input:eq(0)").click(function(){
+	$(".scroll_box").stop().animate({left:-320},1000,function(){
+		/*滚动框归位*/
+		$(".scroll_box").css({left:-160})
+		/*第一张插到第3张的后面*/
+		$(".scroll_box img:first").insertAfter(".scroll_box img:last");	
+	});
+})
+$("input:eq(1)").click(function(){
+	$(".scroll_box").stop().animate({left:0},1000,function(){
+		/*滚动框归位*/
+		$(".scroll_box").css({left:-160})
+		/*第一张插到第3张的后面*/
+		$(".scroll_box img:last").insertBefore(".scroll_box img:first");	
+	});
+})
+</script>
+</body>
+</html>

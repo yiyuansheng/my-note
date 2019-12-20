@@ -1,0 +1,13 @@
+官网：https://github.com/lgarron/clipboard-polyfill
+1、使用以下其中一种获取源代码：
+	*下载build/clipboard-polyfill.js并使用<script>标签包含它。
+		https://raw.githubusercontent.com/lgarron/clipboard-polyfill/master/build/clipboard-polyfill.js
+	||* npm install clipboard-polyfill并导入为clipboard。
+	||*在script引入clipboard-polyfill.js
+
+2、复制纯文本
+	将文字复制到剪贴板（所有现代浏览器，在script中输入一下内容）：
+		clipboard.writeText("This text is plain.//我是要复制的内容");
+
+	从剪贴板中阅读文本（IE 9-11和Chrome 65+）：
+		clipboard.readText().then(console.log, console.error);

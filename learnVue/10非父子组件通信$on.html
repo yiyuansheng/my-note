@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue</title>
+</head>
+<body>
+<div id="app">
+    {{message}}
+    <component-a></component-a>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+  // 创建一个空的Vue的实例，作中间商把信息在组件间传递
+    let bus = new Vue () ;
+    Vue.component('component-a', {
+      template: `
+        <button @click="handelEvent">传递事件</button>
+      `,
+      methods: {
+        handelEvent () {
+          bus.$emit('on-message', '来自组件component-a 的内容')
+        }
+      }
+    })
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: ''
+        },
+        mounted () {
+          bus.$on('on-message', (msg) => {
+            this.message = msg
+          })
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue</title>
+</head>
+<body>
+<div id="app">
+    总价：{{prices}}
+  <button @click="add" :class="[isActive? activecls: '', error]">jiajia</button>
+  <p>{{now()}}</p>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        arr: [1,2,3],
+        goodsList: {
+          package1: [
+            {
+              name: 'iphone7',
+              price: 7199,
+              count: 2
+            },
+            {
+              name: 'ipad',
+              price: 2888,
+              count: 1
+            }
+          ],
+          package2: [
+            {
+              name: 'apple',
+              price: 3,
+              count: 5
+            },
+            {
+              name: 'banana',
+              price: 2,
+              count:10
+            },
+          ]
+        }
+      },
+      computed: {
+        prices () {
+          let prices = 0
+         for (var key in this.goodsList) {
+           this.goodsList[key].forEach((item, i) => {
+             prices += item.price * item.count
+           })
+         }
+          return prices
+        }
+      },
+      methods: {
+        add () {
+          this.goodsList.package1[1].count ++
+          console.log(this.goodsList.package1[1].count);
+        },
+        now () {
+          return Date.now()
+        }
+      }
+    })
+</script>
+</body>
+</html>

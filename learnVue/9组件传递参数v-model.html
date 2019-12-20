@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue</title>
+</head>
+<body>
+<div id="app">
+  <p>总数：{{total}}</p>
+  <my
+    v-model="total"
+  >
+  </my>
+  <button @click="handleReduce">-1</button>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+  Vue.component('my', {
+    props: ['value'],
+    template: `
+        <div>
+          <input type="text" :value="value" @input="updateValue">
+        </div>
+      `,
+    data () {
+      return {
+        counter: 0
+      }
+    },
+    methods: {
+      updateValue (event) {
+        this.$emit('input', event.target.value)
+      },
+    }
+  })
+  let app = new Vue({
+    el: '#app',
+    data: {
+      total: 0
+    },
+    methods: {
+      handleReduce () {
+        this.total --
+      }
+    }
+  })
+</script>
+</body>
+</html>

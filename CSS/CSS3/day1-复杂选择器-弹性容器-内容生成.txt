@@ -1,0 +1,321 @@
+﻿1、复杂选择器
+	1、兄弟选择器
+		兄弟：平级的元素是兄弟元素
+		注意：CSS3兄弟选择器只能向后找兄弟，不能向前找兄弟
+		1、相邻兄弟选择器
+			匹配指定元素的相邻兄弟元素
+			ex
+				<div></div>
+				<span></span>
+				<p></p>
+			语法：
+				选择器1+选择器2{ ... }
+				匹配 紧紧挨在选择器1后面的满足选择器2的元素
+			ex:
+				1、div+span{ ... }
+				2、#container+p{ ... }
+				3、#container+div.topic{ ... }
+		2、通用兄弟选择器
+			作用：匹配某元素后所有满足条件的兄弟元素
+			语法：选择器1~选择器2{}
+	2、属性选择器
+		1、什么是属性选择器
+			允许使用元素附带的属性及其值，来匹配页面的某些元素
+			Q : 想获取页面中所有的文本框元素 ？？？
+				<input type="text">
+		2、语法
+			1、[attr]
+				attr:表示页面任意被支持的属性名称
+				作用：匹配页面中所有带有 attr 属性的元素
+				ex：
+					1、[type]
+						匹配页面中所有带有 type 属性的元素
+					2、[class]
+						匹配页面中所有带有 class 属性的元素
+			2、elem[attr]
+				elem:表示页面中任意被支持的元素
+				作用：匹配页面中所有带有 attr 属性的 elem 元素
+				ex:
+					div[class] : 匹配页面中所有带有 class 属性的 div 元素
+			3、[attr1][attr2]...
+				作用：匹配页面中同时带有 attr1 和 attr2 属性的元素
+				ex:
+					1、div[id][class]
+						匹配页面中同时带有 id 和 class 属性的 div元素
+			4、[attr=value]
+				作用：匹配页面中attr属性值为 value 的元素
+				ex:
+					1、匹配页面中所有的文本框
+						input[type=text]
+						input[type="text"]
+						input[type='text']
+			5、[class~=value]
+				<div class="a1 a2 a3 a4">
+				作用：匹配的是，class属性值是一个由多个类选择器来组成的值列表(多类选择器)，value是该列表中的一个独立选择器 的元素
+
+				ex:
+					1、div[class~="lf"]
+						匹配到的是 class 值列表中包含 lf 选择器的 div元素
+			6、[attr^=value]
+				作用：匹配 attr 属性值是以 value字符作为开始的元素
+				ex:
+					1、[class^="col-"]
+
+						<div class="col-md-1">
+						<div class="col-md-2">
+						<div class="col-md-3">
+						<div class="col-sm-1">
+			7、[attr*=value]
+				作用：匹配页面中所有attr属性值中包含value字符的元素
+				1、[class*="md"]
+					<div class="col-md-1">
+					<div class="col-md-2">
+					<div class="col-md-3">
+			8、[attr$=value]
+				作用：匹配页面中所有attr属性值是以value字符作为结尾的元素
+				1、[class$="-1"]
+					<div class="col-md-1">
+					<div class="col-sm-1">
+	3、伪类选择器
+		1、目标伪类
+			1、作用
+				突出显示活动的HTML锚点元素
+			2、语法
+				:target 或 选择器:target
+		2、结构伪类
+			1、:first-child
+				匹配 属于其父元素中的 首个子元素
+				<div>
+					<p>1</p>
+					<p>2</p>
+					<p>3</p>
+					<p>4</p>
+				</div>
+				ex:
+					p:first-child{ ... }
+			2、:last-child
+				作用：匹配 属于其 父元素中的 最后一个子元素
+				ex:
+					p:last-child{
+						
+					}
+			3、:nth-child(n)
+				匹配 属于其父元素中的 第n个子元素
+				:nth-child(5)
+
+				:nth-child(1) --> :first-child
+			4、:empty
+				匹配没有子元素的元素
+				ex:
+					div:empty{ ... }
+
+					<div></div>
+			5、:only-child
+				匹配属于其父元素中唯一子元素的元素
+		3、否定伪类
+			1、作用
+				将满足条件的选择器匹配的元素 排除出去
+			2、语法
+				:not(selector){ ... }
+				将满足selector选择器的元素排除出去
+				ex:
+					1、在表格中，想匹配除第一行以外的所有行
+						tr:not(:first-child){}
+					2、匹配 每行中 除第一列以外的所有列
+						td:not(:first-child)
+	4、伪元素选择器
+		伪类选择器：匹配到的都是完整的元素
+		伪元素选择器：匹配到的是某元素中内容中的一个部分
+		1、:first-letter 或 ::first-letter
+			作用：匹配某元素的首字符
+		2、:first-line 或 ::first-line
+			作用：匹配某元素的首行文本
+		3、::selection
+			作用：匹配用户选取的部分
+			只能修改元素的 背景色 以及 文本颜色
+
+		: VS ::
+			1、:是在CSS2中提出来的，既能表示伪类选择器，又能表示伪元素选择器
+			2、::是在CSS3中提出来的，只能表示伪元素选择器
+				::first-letter : 
+					仅在支持CSS3浏览器中能被识别
+					不支持CSS3的浏览器则不能识别
+				:first-letter :
+					支持CSS3浏览器中能被识别
+					不支持CSS3浏览器也能被识别
+2、内容生成
+	1、作用
+		允许通过css的方式动态的向某元素的内容区域中增加内容
+	2、伪元素选择器
+		1、:before 或 ::before
+			匹配某元素内容区域之前
+			<div>(:before)这是一个div</div>
+		2、:after 或 ::after
+			匹配某元素内容区域之后
+			<div>这是一个div(:after)</div>
+	3、属性
+		属性：content
+		作用：向指定的内容区域生成新的内容
+		取值：
+			1、字符串 ：即用双引号引起来的普通文本
+			2、url() : 生成一副图像
+	4、解决的两个问题
+		1、浮动元素父元素的高度问题
+		2、解决外边距的溢出问题
+3、弹性布局(难点)
+	1、什么是弹性布局
+		弹性布局(Flexible Box),简称为 Flex 布局，用来指定某元素中子元素的位置排列方式的。
+	2、概念
+		1、容器(Container)
+			使用弹性布局属性的元素称之为"弹性布局容器"，简称为 "容器"，容器中的子元素，可以按照弹性布局的方式进行排列
+		2、项目(Item)
+			容器中的所有子元素，都称之为"弹性布局项目"，简称"项目"
+		3、主轴(Main axsis)
+			决定元素排列方向的一根轴
+			默认 横轴 为主轴
+
+			如果主轴为横轴的话，项目们则横向排列
+			如果主轴为纵轴的话，项目们则纵向排列
+		4、交叉轴(Cross axsis)
+			与主轴交叉的一根轴
+			默认 纵轴 为交叉轴
+			如果主轴为横轴的话，那么纵轴就是交叉轴
+			如果主轴为纵轴的话，那么横轴就是交叉轴
+	3、语法
+		1、属性：display
+			作用：将指定的元素变为弹性布局容器
+			取值：
+				1、flex
+					将块级元素变为弹性布局容器
+				2、inline-flex
+					将行内元素变为弹性布局容器
+			注意：
+				强元素改为弹性布局容器之后
+				1、项目(Item)的float，clear属性 将失效
+				2、容器(Container)的text-align,vertical-align属性 将失效
+				3、所有的项目(Item)都将变成块级元素
+					允许正常使用 width,height,margin,padding
+				4、项目(Item)不会出现外边距合并的问题
+		2、容器属性
+			该组属性，是需要加给弹性布局容器的，目的是控制所有子元素(项目)的位置摆放效果
+			1、属性：flex-direction
+				作用：决定了主轴以及项目在主轴上的排列方向
+				取值:
+					1、row
+						默认值，主轴为横轴，起点在左端
+					2、row-reverse
+						主轴为横轴，起点在右端（即从右向左排列）
+					3、column
+						主轴为纵轴，起点在顶端(即从上向下排列)
+					4、column-reverse
+						主轴为纵轴，起点在底端(即从下向上排列)
+			2、属性：flex-wrap
+				作用：指定项目的换行方式(前提：所有项目在一根轴上排列不下时使用)
+				取值：
+					1、nowrap
+						默认值，即不换行
+						默认情况下，浏览器会调整项目的大小来适应容器
+					2、wrap
+						换行
+					3、wrap-reverse
+						换行
+			3、属性：flex-flow
+				作用：flex-direction 和 flex-wrap的缩写
+				取值：
+					1、row nowrap
+						默认值
+					2、direction wrap
+						ex:
+							row-reverse wrap
+			4、属性：justify-content
+				作用：定义了项目在主轴上的对齐方式
+				取值：
+					1、flex-start
+						在主轴的起点对齐，从起点向终点方向排列，靠近起点方向
+					2、flex-end
+						在主轴的终点对齐，靠近终点方向
+					3、center
+						居中对齐
+					4、space-between
+						两端对齐，每两个项目之间的间隔是相等的，第一个项目靠近起点，最后一个项目靠近终点
+					5、space-around
+						每个项目两侧的间隔是相等的
+			5、属性：align-items
+				作用：定义项目在交叉轴上如何对齐(仅限一行项目时使用)
+				取值：
+					1、flex-start
+						在交叉轴的起点对齐
+					2、flex-end
+						在交叉轴的终点对齐
+					3、center
+						在交叉轴中间对齐
+					4、baseline
+						在项目的第一行文本的基线对齐
+					5、stretch
+						如果项目未设置高度或高度为auto时，那么项目将沾满整个容器的高度
+			6、属性：align-content
+				作用：定义项目如何在交叉轴上的对齐方式(多行项目时使用)
+				取值：
+					1、flex-start
+						等同于 align-items 的flex-start
+						交叉轴的起点对齐
+					2、flex-end
+						等同于 align-items 的flex-end
+						交叉轴的终点对齐
+					3、center
+						等同于 align-items 的center
+						交叉轴的中间对齐
+					4、space-between
+						与交叉轴的两端对齐
+					5、space-around
+						每个轴向两侧的间距是相等的
+					6、stretch
+						默认值，等同于 align-items 的stretch
+		3、项目属性
+			该组属性，要设置给弹性布局项目的，控制某个项目自己的特殊效果
+			1、属性：order
+				作用：指定项目的排列顺序，默认值为0，则按照代码的顺序出现
+				取值：整数数字，数字越大越靠后，数字越小越靠前
+			2、属性：flex-grow
+				作用：指定项目的放大比例，如果容器有足够的剩余空间的话，项目将如何处理尺寸
+				取值：
+					整数数字，即放大比例
+					默认值为0，即便有剩余空间，也不放大
+					数值越大，占据的剩余空间越多
+			3、属性：flex-shrink
+				作用：指定项目的缩小比例，即容器空间不足时，如何处理项目的尺寸
+				取值：
+					默认值为1
+					取值为整数数字，数字越大，缩小的比例越大
+			4、属性：flex-basis
+				作用：指定项目在主轴上所占的空间大小
+				取值：
+					1、auto
+						自动，默认值，即项目本身大小
+					2、size
+						自定义的大小
+			5、属性：flex
+				作用：flex-grow，flex-shrink，flex-basis的缩写
+				取值：
+					1、auto
+						等同于 1 1 auto
+					2、none
+						等同于 0 0 auto
+					3、自定义数值
+						1 0 auto
+			6、align-self
+				作用：指定某项目独立的交叉轴对齐方式,可以覆盖父元素(容器)的align-items的效果
+				取值：
+					1、auto
+						默认值，继承自父元素(容器)的align-items的效果
+					2、flex-start
+						交叉轴起点对齐
+					3、flex-end
+						交叉轴的终点对齐
+					4、center
+						交叉轴的中间对齐
+					5、baseline
+						与第一行文本的基线对齐
+					6、stretch
+						等同于 父元素的 stretch
+4、CSS Hack

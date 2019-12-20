@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue</title>
+</head>
+<body>
+<div id="app">
+    <child-component scope="props">
+      <p>来自父组件的内容</p>
+      <p>{{props.msg}}</p>
+    </child-component>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+    Vue.component('child-component', {
+      template: `
+        <div>
+        <slot msg="来自子组件的内容"></slot>
+</div>
+      `
+    })
+    var app = new Vue({
+        el: '#app',
+        data: {
+            date: new Date()
+        }
+    })
+</script>
+</body>
+</html>

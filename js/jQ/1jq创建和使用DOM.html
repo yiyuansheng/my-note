@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>jQuery/$工厂函数</h1>
+    <button id="btn1">click me(0)</button>
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script>
+        var $btn=$("#btn1");
+        $btn.click(e=>{
+            var $tar=$(e.target);
+            var n=parseInt(
+                    $tar.html().slice(9,-1)
+            );
+            $tar.html(`click me(${++n})`);
+        })
+    </script>
+</body>
+</html>

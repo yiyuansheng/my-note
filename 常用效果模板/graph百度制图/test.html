@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{text-align: center}
+    </style>
+</head>
+<body>
+<h1>饼图</h1>
+
+<div id="box" style="width:600px;height:500px;border:1px solid red"></div>
+<script src="echarts.js"></script>
+<script>
+    //饼图没有X轴与Y轴,数据绑定也是采用value和name对应形式
+    window.onload = function(){
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                //左侧标题
+                text: 'ECharts 入门示例'
+            },
+            series: [{
+                name: '访问量',
+                type: 'pie',//bar
+                radius:'60%',
+                data: [
+                    {value:500,name:"一月"},
+                    {value:200,name:"二月"},
+                    {value:300,name:"三月"},
+                    {value:100,name:"四月"},
+                    {value:500,name:"五月"},
+                    {value:200,name:"六月"},
+                    {value:300,name:"七月"},
+                    {value:100,name:"八月"},
+                    {value:500,name:"九月"},
+                    {value:200,name:"十月"},
+                    {value:300,name:"十一月"},
+                    {value:100,name:"十二月"},
+
+                ]
+            }]
+        };
+        var myChart = echarts.init(document.getElementById("box"));
+        myChart.setOption(option);
+    }
+
+</script>
+</body>
+</html>

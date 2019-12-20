@@ -1,0 +1,275 @@
+1、尺寸与边框
+	1、单位 ...
+	2、尺寸 ...
+	3、边框属性
+		1、边框属性
+			1、简写方式属性
+				通过一个属性 将元素的四个方向的边框的所有的操作一起设置
+				语法：
+					border:width style color;
+						width:边框宽度，以px为单位
+						style:边框样式
+							solid:实线
+							dotted:虚线(.......)
+							dashed:虚线(-------)
+						color:边框颜色
+							可以取值为 transparent(透明)
+						border 可以取值为 none 或 0;
+			2、单边定义
+				只单独设置某一条边的宽度，样式，颜色
+				属性：border-方向:width style color;
+					方向：top / right / bottom / left
+					ex:
+						1、border-left:2px dotted red;
+						2、border-bottom:1px dashed blue;
+				特殊：border-方向:none / 0;
+			3、单属性设置
+				设置四个方向边框的某一具体属性值
+				属性：border-属性:值;
+					属性：width / style / color
+			4、单边单属性设置
+				设置某个方向的边框的某一具体属性
+				属性：border-方向-属性:值;
+					ex:
+						1、border-top-color:blue;
+						2、border-left-style:dotted;
+		2、边框倒角属性
+			属性：
+				border-radius
+			取值：
+				以px为单位的数值 或 %
+			单角属性：
+				border-top-left-radius:
+				border-top-right-radius:
+				border-bottom-left-radius:
+				border-bottom-right-radius:
+			ex:
+				1、border-radius:5px;
+				2、border-radius:50%;
+					将矩形元素变为圆形(正圆，椭圆)
+				3、border-radius:5px 10px 15px 20px;
+					左上角倒角半径：5px
+					右上角倒角半径：10px
+					右下角倒角半径：15px
+					左下角倒角半径：20px			
+		3、边框阴影属性
+			属性：box-shadow
+			取值：
+				h-shadow v-shadow blur spread color inset
+
+				h-shadow:阴影的水平偏移距离，取值为正，阴影向右偏移，取值为负，阴影向左偏移
+				v-shadow:阴影的垂直偏移距离，取值为正，阴影向下偏移，取值为负，阴影向上偏移
+				blur:可选，阴影的模糊大小
+				spread:可选，阴影的大小
+				color:可选，颜色
+				inset:可选，将默认的外阴影改为内阴影
+
+			文字阴影：.txt {text-shadow:5px 1px 6px #F93 }  
+					  .txt2 {text-shadow:1px 1px 1px #000; padding:10px 0; color:#FFF; background:#CCC} 
+		4、轮廓属性
+			轮廓：绘制与元素边框外围的一条线
+			属性：outline
+			取值：width style color;
+
+			outline-widht:
+			outline-style:
+			outline-color:
+
+			轮廓的常用方式：
+				outline:none / 0;
+2、框模型
+	1、什么是框模型
+		框：页面元素皆为框
+		框模型：Box Model 定义了元素处理(计算)尺寸，边框，内边距 和 外边距的 一种方式
+
+		有框模型的属性介入到元素中的时候，元素实际占地面积就会发生改变
+
+		元素实际占地宽度=左右外边距+左右边框+左右内边距 + width;
+		元素实际占地高度=上下外边距+上下边框+上下内边距 + height;
+	2、外边距
+		1、什么是外边距
+			围绕在元素边框周围的空白区域就是外边距
+			外边距也是体现两个元素之间距离的一种表现方式
+		2、语法
+			1、属性
+				margin:设置四个方向的外边距值;
+				margin-top/right/bottom/left:设置单一方向外边距值;
+			2、取值
+				1、取值为 px 的具体值
+				2、%
+				3、auto
+					自动，自动计算左右外边距的值，前提要求元素必须有宽度
+				4、负数
+					目的是为了移动元素
+					margin-top 设置数据为正数时，元素向下移动
+					margin-left 设置数据为正数时，元素向右移动
+					margin-top 设置数据为负数时，元素向上移动
+					margin-left 设置数据为负数时，元素向左移动
+				5、margin 的简写方式
+					1、margin:value;
+						四个方向外边距是相同的
+					2、margin:v1 v2;
+						v1:上下外边距
+						v2:左右外边距
+						ex:
+							margin:0 auto;
+					3、margin:v1 v2 v3;
+						v1:上外边距
+						v2:左右外边距
+						v3:下外边距
+					4、margin:v1 v2 v3 v4;
+						上 右 下 左
+			3、页面中具备默认外边距的元素
+				在页面中 
+					body,p,h1,h2,h3,h4,h5,h6,ol,ul,dl,dd,pre
+				以上元素会具备默认的外边距
+				在网页开发中，通常会通过 CSS Reset(重写)的方式，将默认的外边距全部都设置为0
+			4、外边距的特殊效果
+				1、外边距的合并
+					当两个垂直外边距相遇时，他们将合并成一个，取两者间较大的值，作为他们的外边距
+				2、外边距的溢出
+					在某些特殊的条件下，为子元素设置外边距时，会作用到父元素上
+					特殊条件：
+						1、父元素不能有上边框
+						2、为第一个子元素设置上外边距时
+					解决方案：
+						1、为父元素增加上边框即可
+							弊端：父元素的高度会发生改变
+						2、为父元素设置上内边距来取代子元素的上外边距
+							弊端：父元素的高度会发生改变
+						3、在子元素之上再增加一个空<table></table>
+							弊端：在页面上会多一个空子元素
+						4、... ...
+				3、为行内元素 和 行内块元素设置垂直外边距时
+					1、行内元素
+						对垂直外边距，无效，img 除外
+					2、行内块元素
+						整行元素都跟着发生改变
+	3、内边距
+		1、什么是内边距
+			内容区域 与 边框(边缘)之间的空间
+			注意：内边距会扩大元素边框的占用区域
+		2、语法
+			1、属性
+				padding:值;
+				padding-top/right/bottom/left:值;
+			2、取值
+				1、为 px 具体值
+				2、为 % 的相对数据
+
+			3、简便写法
+				1、padding:value;
+					四个方向外边距相同
+				2、padding:v1 v2
+					上下  左右
+				3、padding:v1 v2 v3;
+					上  左右  下
+				4、padding:v1 v2 v3 v4;
+					上 右 下 左
+		3、特殊效果
+			1、为行内元素 和 行内块 元素设置垂直内边距时
+				只会影响自己，并不会影响其它元素
+		4、box-sizing
+			页面中 元素边框内 的尺寸计算方式
+			元素边框内宽度=左右边框+左右内边距+width
+			div{
+				width:400px;
+				border:2px solid red;
+				border-left-widt:17px;
+				padding-left:32px;
+				padding-right:16px;
+			}
+
+			属性：box-sizing
+			作用：重新指定元素框模型的计算模式
+			取值：
+				1、content-box
+					默认值，采用默认的计算模式
+					元素边框内宽度=左右边框+左右内边距+width
+					元素边框内高度=上下边框+上下内边距+height
+				2、border-box
+					新计算模式，会将元素的border以及padding算在 width 和 height 之中
+3、背景属性
+	1、背景颜色
+		属性：background-color
+		取值：
+			合法颜色值 或 transparent
+		注意：
+			1、背景色会填充到元素的内容，内边距，以及边框上的
+			2、如果边框为透明色，则边框位置处显示的颜色与背景色一致
+	2、背景图像
+		属性：background-image
+		取值：url(图像URL)
+		注意：
+			1、背景图是从元素的左上方出现的
+			2、如果背景的尺寸大于元素的尺寸的话，那么落在元素内的图片是可见的，元素外的图是不可见的
+			3、如果元素的尺寸大于背景图的尺寸，默认是以平铺(重复)的方式出现的
+	3、背景图像重复
+		属性：background-repeat
+		取值：
+			1、repeat
+				在垂直和水平方向都平铺,默认值
+			2、repeat-x
+				仅在水平方向平铺
+			3、repeat-y
+				仅在垂直方向平铺
+			4、no-repeat
+				不平铺
+	4、背景图片尺寸
+		属性：background-size
+		取值：
+			1、width height
+			2、width% height%
+			3、cover
+				覆盖，将背景图等比放大，直到背景图能覆盖到当前元素的所有区域为止
+			4、contain
+				包含，将背景图等比放大，直到背景图的右边或下边碰到元素边缘为止
+	5、背景图片固定
+		属性： background-attachment
+		取值：
+			1、scroll
+				默认值，背景图会随着滚动条而滚动
+			2、fixed
+				固定,背景图不会随着滚动条的滚动而改变位置
+	6、背景图片定位/位置
+		作用：改变背景图像在元素中的默认位置
+		属性：background-position
+		取值：
+			1、x y
+				x ：背景图像水平偏移距离，取值为正，背景图向右偏移，取值为负，背景图向左偏移
+				y ：背景图像垂直偏移距离，取值为正，背景图向下偏移，取值为负，背景图向上偏移 
+			2、x% y%
+				背景图在元素的大体的哪个位置处
+			3、关键字
+				x : left / center / right
+				y : top / center / bottom
+		
+		CSS Sprites
+			雪碧图，精灵图
+			将若干幅小图片拼合一幅大图片中的实现方式
+	7、背景属性
+		属性：background
+		取值：color url() repeat attachment position
+
+		ex:
+			1、background:red;
+			2、background:url(a.jpg) -10px 125px;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,14 @@
+<script>
+		Vue.filter('time',t => {
+			function pretty(val) {
+				return val < 10 ? '0' + val : val
+			};
+			let date = new Date(t);
+			let y = date.getFullYear();
+			let m = pretty(date.getMonth() + 1);
+			let d = pretty(date.getDate());
+			let h = pretty(date.getHours());
+			let f = pretty(date.getMinutes());
+			return `${y}-${m}-${d} ${h}:${f}`
+		});
+</script>

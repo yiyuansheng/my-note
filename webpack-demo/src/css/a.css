@@ -1,0 +1,13 @@
+body{
+    background: url("../images/mny.gif") right top no-repeat;
+}
+#root{
+    color:yellow;
+    transform: rotate(-10deg);
+}
+.a{
+    color:#ccc;
+}
+.b{
+    background: red;
+}

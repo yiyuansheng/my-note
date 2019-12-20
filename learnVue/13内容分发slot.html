@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue</title>
+</head>
+<body>
+<div id="app">
+    <child-component>
+      <h1 slot="header">标题</h1>
+      <p>分发主要内容</p>
+      <h2 slot="footer">底部信息</h2>
+    </child-component>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+    Vue.component('child',{
+      template: `
+        <div>
+          <div class="header">
+            <slot name="header"></slot>
+          </div>
+          <div class="main">
+            <slot></slot>
+          </div>
+          <div class="footer">
+            <slot name="footer"></slot>
+          </div>
+
+        </div>
+              `
+    })
+    var app = new Vue({
+        el: '#app',
+        data: {
+            date: new Date()
+        }
+    })
+</script>
+</body>
+</html>

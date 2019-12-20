@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head> 
+<script src="jquery.js"></script>
+<style>
+.big_box{width:160px;height:220px;margin:auto;position:relative;border:solid red 3px;}
+.scroll_box{width:480px;overflow:hidden;position:absolute;}
+.scroll_box img{float:left;}
+</style>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div class="big_box">
+	<div class="scroll_box">
+		<img width="160" height="220" src="images/zl-01.jpg">
+		<img width="160" height="220" src="images/zl-02.jpg">
+		<img width="160" height="220" src="images/zl-03.jpg">
+    </div>
+</div>
+<input type="button" value="<<向左走"><input type="button" value="向右走>>">
+<script>
+/*点按钮动*/
+var n=0;
+$("input:eq(0)").click(function(){
+	if(n<2){
+		n=n+1;
+	}else{
+		n=2;
+	}
+	document.title=n;
+	$(".scroll_box").animate({left:-160*n},1000);
+})
+$("input:eq(1)").click(function(){
+	if(n>0){
+		n=n-1;
+	}else{
+		n=0;
+	}
+	document.title=n;
+	$(".scroll_box").animate({left:-160*n},1000);
+})
+</script>
+</body>
+</html>

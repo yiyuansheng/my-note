@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <h1>ajax实现文件上传</h1>
+  <p id="errorRemind">
+    出错信息
+  </p>
+  <input id="uploadPic" type="button" value="上传图片"/>
+  <ol id="uploadedName">
+    上传文件名称列表
+  </ol>
+  <script src="js/ajaxupload.js"></script>
+  <script>
+    //1:获取所有相应元素
+    //2:获取出错对象
+    var oRemind = document.getElementById("errorRemind");
+    //3:获取上传按钮
+    var oBtn = document.getElementById("uploadPic");
+    //4:上传文件列表
+    var oShow = document.getElementById("uploadedName");
+
+    //5:如何使上传插件
+    //1:创建ajaxupload对象
+    //参数一:上传按钮
+    //参数二:上传选项
+    new AjaxUpload(oBtn,{
+      action:"upload.php",   //指定上传程序地址
+      name:"upload",         //上传文件
+      onSubmit:function(file,ext){
+        //上传执行之前处理
+        //file 上传文件名
+        //ext   上传文件后缀名
+       if(/^(jpg|jpeg|png|gif")$/.test(ext)){
+       //上传类型判断
+         //ext 是后缀名
+         //上传文件中间禁止再次上传文件
+         oBtn.value = "正在上传...";
+         oBtn.disabled = "disabled";
+       }else{
+         oRemind.style.color="#ff3300";
+         oRemind.innerHTML = "不支持非图片格式";
+         return false;
+       }
+      },
+      onComplete:function(file,response){
+        //上传结束之后处理
+        //file上传文件名
+        //response 服务器返回数据
+        oBtn.disabled = "";
+        oRemind.style.color="#ff3300";
+        oBtn.value = "再上传一张图片";
+        oRemind.innerHTML = "上传成功";
+      }
+    });
+  </script>
+</body>
+</html>

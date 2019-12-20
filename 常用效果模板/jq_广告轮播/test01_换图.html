@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<script src="jquery.js"></script>
+<style>
+img{display:block;}
+.img_box{width:160px;height:220px;margin:auto;}
+.img_box a{display:block;width:30px;height:30px;font-size:20px;text-align:center;line-height:30px;background-color:black;color:white;position:absolute;top:90px;}
+.img_box{position:relative;}
+.left_button{left:-20px;-moz-user-select:none;}
+.right_button{right:-20px;-moz-user-select:none;}
+</style>
+<script src="jquery.js"></script>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div class="img_box">
+	<img width="160" src="images/zl-01.jpg">
+    <a onselectstart="return false" class="left_button">&#8249;</a>
+    <a onselectstart="return false" class="right_button">&#8250;</a>
+</div>
+<script>
+/*点按钮把图片换成另一张*/
+var n=1;
+	$(".right_button").click(function(){
+	if(n<5){
+		n=n+1;
+	}else{
+		n=1;
+	}
+	document.title=n;
+	$("img").attr("src","images/zl-0"+n+".jpg");
+});
+$(".left_button").click(function(){
+	if(n>1){
+		n=n-1;
+	}else{
+		n=5;
+	}
+	document.title=n;
+	$("img").attr("src","images/zl-0"+n+".jpg");
+});
+
+</script>
+</body>
+</html>

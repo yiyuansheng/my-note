@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<script src="jquery.js"></script>
+<style>
+img{display:block;}
+.img_box{width:160px;height:220px;margin:auto;}
+.img_box a{display:block;width:30px;height:30px;font-size:20px;text-align:center;line-height:30px;background-color:black;color:white;position:absolute;top:90px;}
+.img_box{position:relative;}
+.left_button{left:-20px;-moz-user-select:none;}
+.right_button{right:-20px;-moz-user-select:none;}
+</style>
+<script src="jquery.js"></script>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<div class="img_box">
+	<img width="160" src="images/zl-01.jpg">
+    <a onselectstart="return false" class="left_button" style="background-color:#e8e8e8;">&#8249;</a>
+    <a onselectstart="return false" class="right_button">&#8250;</a>
+</div>
+<script>
+/*初始值n是1,也就是从第1张图片开始*/
+var n = 1;
+/*点右箭头的时候*/
+$(".right_button").click(function(){
+	/*如果数值小于5，准备显示下一张图*/
+	if(n<5){
+		/*如果数值等于4，就是在第4图的时候，当前按钮变成灰色*/
+		if(n==4){
+			$(this).css({backgroundColor:"#e8e8e8"});
+		}
+		/*不是第4张图的时候，左按钮变成黑色*/
+		$(".left_button").css({backgroundColor:"black"});
+		/*数值n加1，向下走一张图片*/	
+		n=n+1;
+	}else{
+		/*n不小于5，也就是到了最后一张，让n等于5，一直显示最后一张*/
+		n=5;
+	}
+	document.title=n;
+	$("img").attr("src","images/zl-0"+n+".jpg");
+})
+/*向左的按钮*/
+$(".left_button").click(function(){
+	if(n>1){
+		if(n==2){
+			$(this).css({backgroundColor:"#e8e8e8"})
+		}
+		$(".right_button").css({backgroundColor:"black"})
+		n=n-1;
+	}else{
+		n=1;
+	}
+	document.title=n;
+	$("img").attr("src","images/zl-0"+n+".jpg");
+})
+</script>
+</body>
+</html>

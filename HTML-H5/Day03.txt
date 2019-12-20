@@ -1,0 +1,261 @@
+1、block , inline , table 的区别
+	1、display:block
+		块级元素
+		特点：
+			1、默认宽度是占父元素宽度的 100%
+			2、独占一行(块)
+	2、display:inline
+		行内元素
+		特点：
+			1、元素宽度以内容为准
+			2、多个行内元素允许在一行内显示，显示不下再换行
+	3、display:table
+		table元素
+		特点：
+			1、table的宽度默认以内容为准
+			2、每个table也都是独占一行的
+=========================================
+1、结构标记
+	1、作用
+		结构标记主要用于搭建网页结构的
+
+	2、结构标记的详解
+		1、<header>标记
+			作用：用于定义网页的顶部信息 或 某部分内容的顶部信息
+			语法：<header></header>
+		2、<nav>标记
+			作用：用于定义网页的导航链接部分
+			语法：<nav></nav>
+		3、<section>标记
+			作用：用于定义页面的主体内容
+			语法：<section></section>
+		4、<article>标记
+			作用：用于定义 偏向于纯文本的内容模块区域.比如：新闻网页中的某一具体新闻信息，博客 以及 微博中的条目，论坛中的帖子(主贴，回帖)
+			语法：<article></article>
+		5、<aside>标记
+			作用：用于定义网页中 或  某模块中的边栏信息
+			语法：<aside></aside>
+		6、<footer>标记
+			作用：用于定义页面中 底部的信息
+			语法：<footer></footer>
+2、表单(难点)
+	1、表单的作用
+		1、用于与用户进行数据的交互 - 表单控件
+		2、收集用户的信息并且提交给服务器
+
+		注意：表单在页面中是不可见的，但功能是无法被取代的。
+	2、表单的组成
+		1、表单元素- <form></form>
+		2、表单中的控件
+
+		只有放在 <form></form>中的表单控件才能被提交给服务器
+	3、表单元素
+		1、标记 
+			<form></form>
+		2、属性
+			1、action
+				定义表单被提交时发生的动作，实际上就是表单数据要被提交给服务器处理程序的地址
+				该地址通常都是由服务器端人员来提供的,默认提交给本页
+			2、method
+				定义表单数据的提交方式
+				取值：
+					1、get
+						1、明文提交 - 会将提交的信息显示在地址栏上
+						2、安全性特别低
+						3、向服务器要数据的时候，使用 get 提交方式
+						4、最大提交 2KB 的数据
+					2、post
+						1、隐式提交 - 所提交的数据不会显示在任何位置处
+						2、安全性较高 - 一般在涉及密码，银行卡，身份证号等信息的时候 一律使用 post
+						3、提交数据给服务器进行处理的时候用post
+						4、post 是没有提交数据大小限制的
+					3、put
+						... ...
+					4、delete
+						... ...
+				method的默认值为 get
+			3、enctype
+				定义提交数据的编码方式
+				取值：
+					1、application/x-www-form-urlencoded
+						默认值，允许将表单中普通字符，特殊字符进行编码再提交
+					2、multipart/form-data
+						允许将表单中的文件进行编码再提交
+					3、text/plan
+						只能将普通字符进行编码提交给服务器
+			4、name
+				为表单起名，主要提供给 js 使用
+	4、表单控件
+		1、作用
+			用于提供可视化的元素与用户进行数据交互
+			表单控件只有放在表单中，才能被提交给服务器，并且表单只能提交表单控件的数据。
+		2、表单控件的分类
+			1、input元素
+			2、textarea - 多行文本域
+			3、select 和 option  - 选项框元素
+			4、其它元素
+			5、新input元素(HTML5中提出的新元素)
+		3、表单控件的详解
+			1、input元素
+				语法：
+					标记：<input>
+					属性：
+						1、type 
+							类型，根据不同的type值，去创建不同的输入类型的空间
+						2、name
+							定义控件的名称，在提交给服务器时使用(必须设置)
+						3、value
+							定义空间的值，提交给服务器使用
+						4、disabled
+							禁用控件
+							被禁用的控件可以显示在页面上，不能操作，不能提交
+							该属性无值
+							<input disasbled >
+				1、文本框 与 密码框
+					文本框：<input type="text">
+					密码框：<input type="password">
+
+					特有属性：
+						1、maxlength
+							限制用户输入的字符数
+						2、readonly
+							设置控件为只读
+							只能看，不能写，但是允许被提交给服务器
+						3、placeholder
+							占位符
+				2、单选按钮 和 复选框
+					单选按钮：<input type="radio">
+					复选框：<input type="checkbox">
+
+					特有属性：
+						1、name
+							一组的单选按钮 或 一组的复选框，名称必须相同
+						2、checked
+							设置默认被选中
+				3、按钮
+					提交按钮：<input type="submit">
+					重置按钮：<input type="reset">
+					普通按钮：<input type="button">
+					属性：
+						1、value
+							定义按钮上的文本
+
+					按钮的其它写法：
+						<button>显示的文本</button>
+							属性：
+								type:
+									1、submit ：提交按钮
+									2、reset ：重置按钮
+									3、button ：普通按钮
+				4、隐藏域 和 文件选择框
+					1、隐藏域
+						<input type="hidden">
+						要提交给服务器，但是不想给用户看的数据，要放在隐藏域中的
+					2、文件选择框
+						<input type="file">
+						提供一个组件，用于查找本机中的文件，并且选择提交给服务器
+						注意：
+							1、要求<form>的method的属性值必须为 post
+							2、要求<form>的enctype的属性值必须为 multipart/form-data
+						该标记只设置 name 属性即可，不需要给value
+			2、textarea
+				语法：
+					标记：<textarea>默认文本</textarea>
+					属性：
+						1、name
+							名称
+						2、cols
+							定义多行文本域的列数
+							name
+						3、rows
+							定义多行文本域默认显示的行数
+						4、readonly
+							只读
+			3、select 和 option 
+				选项框 : 下拉选项框 和 滚动列表
+				语法：
+					1、标记
+						<select>
+							<option></option>
+							<option></option>
+						</select>
+					2、属性
+						1、<select>属性
+							1、name
+							2、size
+								选项框中默认显示的选项的数量
+								默认为1 ，是下拉选项框
+								如果大于1的话，则为滚动列表
+							3、multiple
+								设置选项框的多选
+								多选要配合Ctrl 或 Shift 一起完成
+						2、<option>属性
+							1、value
+								选项的值
+							2、selected
+								预选中
+			4、其它元素
+				1、label元素
+					作用：关联文本和表单控件的
+					语法：
+						<label>文本</label>
+					属性：
+						1、for
+							要关联的表单控件的ID值
+				2、fieldset 和 legend 元素
+					作用：为控件分组，提供分组的显示效果
+					语法：
+						<fieldset>
+							<legend>标题</legend>
+
+						</fieldset>
+			5、新input元素
+				1、电子邮件类型
+					<input type="email">
+				2、搜索类型
+					<input type="search">
+					升级版的文本框
+				3、URL类型
+					<input type="url">
+				4、电话号码类型
+					<input type="tel">
+					注意：针对移动端设备，在移动端会显示出拨号键盘
+				5、数字类型
+					<input type="number">
+					属性：
+						1、min
+							当前控件允许接受的最小值
+						2、max
+							当前控件允许接受的最大值
+						3、step
+							每次通过控件更改数字的步长,默认为1
+				6、范围类型
+					<input type="range">
+					属性：
+						1、min
+							当前范围的最小值
+						2、max
+							当前范围的最大值
+						3、step
+							值变化的步长
+						4、value
+							当前显示值
+				7、颜色类型
+					<input type="color">
+				8、日期类型
+					<input type="date">
+				9、周类型
+					<input type="week">
+				10、月份类型
+					<input type="month">
+
+
+
+
+
+https://www.baidu.com/?username=libai&userpass=liqingzhao&gender=0&question=0&question=1&question=3
+
+
+https://www.baidu.com/?username=libai&userpass=litaibai&gender=0&question=0&question=3&userID=jd_110120119
+
+

@@ -1,0 +1,67 @@
+<!doctype html>
+<html >
+	<head>
+		<meta charset="UTF-8">
+		<meta name="Generator" content="">
+		<meta name="Author" content="">
+		<meta name="Keywords" content="">
+		<meta name="Description" content="">
+		<title></title>
+		<style>
+			#box{
+				border:1px solid #ccc;
+				width:400px;
+				height:400px;
+				
+			}
+			#box .change{
+				border:1px soli #3EADDF;
+				width:50px;
+				height:50px;
+				background-color:blue;
+				animation:change 5s linear infinite alternate;
+			}
+			#box .change:hover{
+				animation-play-state:paused;
+			}
+			@keyframes change{
+				0%{
+					background-color:blue;
+					border-radius:0%;
+					margin-top:0;
+					margin-left:0;
+					}
+				25%{
+					border-radius:50%;
+					background-color:red;
+					margin-top:0;
+					margin-left:350px;
+				}
+				50%{
+					border-radius:50%;
+					background-color:green;
+					margin-top:350px;
+					margin-left:350px;
+					}
+				75%{
+					border-radius:0%;
+					background-color:yellow;
+					margin-top:350px;
+					margin-left:0px;
+				}
+				100%{
+					border-radius:0%;
+					background-color:blue;
+					margin-top:0;
+					margin-left:0px;
+				}
+			}
+		</style>
+	</head>
+ <body>
+	<div id="box">
+		<div class="change"></div>
+	</div>
+
+ </body>
+</html>

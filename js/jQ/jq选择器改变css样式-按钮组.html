@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    .btngroup{
+        list-style:none;
+    }
+    .btngroup>li{
+        float:left;
+        border:1px solid #000;
+        display:inline-block;
+        width:40px; height:40px;
+        text-align:center;
+        line-height:40px;
+        cursor:pointer;
+    }
+    .btngroup>li:hover{
+        background:#000;
+        color:#fff;
+    }
+    /*.btngroup>li:first-child{*/
+    /*border-top-left-radius:10px;*/
+    /*border-bottom-left-radius:10px;*/
+    /*}*/
+    /*.btngroup>li:last-child{*/
+    /*border-top-right-radius:10px;*/
+    /*border-bottom-right-radius:10px;*/
+    /*}*/
+    /*/!*.btngroup>li:not(:first-child){*!/*/
+    /*.btngroup>li+li{*/
+    /*border-left:0;*/
+    /*}*/
+</style>
+<body>
+<h1>实现按钮组效果</h1>
+<ul id="my-btngroup" class="btngroup">
+    <li>|&lt;</li>
+    <li>▶</li>
+    <li>■</li>
+    <li>&gt;|</li>
+</ul>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    //jq函数的第三个特点: 每个函数都返回正在使用的jQuery对象本身，可用链式操作避免反复查找，节约代码量
+    $(".btngroup>li:last")
+            .css("borderTopRightRadius",10)
+            .css("borderBottomRightRadius",10);
+    $(".btngroup>li:first")
+            .css("borderTopLeftRadius",10)
+            .css("borderBottomLeftRadius",10);
+    $(".btngroup>li:gt(0)").css("borderLeft",0)
+</script>
+</body>
+</html>
