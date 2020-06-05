@@ -1,0 +1,3 @@
+1、ios微信网页长按图片没有发送给好友选项
+	禁用系统长按菜单功能
+		body{-webkit-touch-callout: none;}
