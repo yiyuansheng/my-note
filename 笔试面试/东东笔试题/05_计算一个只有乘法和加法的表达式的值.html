@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var str='1+23*2+3*3*3';
+    function calc(exp){
+        console.log(exp);
+        var arr=exp.split("+");
+        var sum=0;
+        for(var i=0;i<arr.length;i++){
+            if(arr[i].indexOf('*')==-1){
+                sum+=parseFloat(arr[i])
+            }else{
+                var r=1;
+                var arr2=arr[i].split("*");
+                for(var j=0;j<arr2.length;j++){
+                    r*=arr2[j]
+                }
+                sum+=r;
+            }
+        }
+        return sum;
+    }
+    console.log(calc(str))
+</script>
+</body>
+</html>

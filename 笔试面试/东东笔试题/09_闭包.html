@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+      var number=2; //4 //8
+      var obj={
+        number:4, //8
+        fn1:(function(){
+          //var number; //3
+          this.number*=2;
+          number*=2;
+          var number=3;
+          return function(){
+            this.number*=2;
+            number*=3;
+            alert(number);
+          }
+        })()
+    //    fn1:function(){//(number=3,9,27)
+    //      this.number*=2;
+    //      number*=3;
+    //      alert(number);
+    //    }
+      };
+      var fn1=obj.fn1;
+      alert(number);//4
+      fn1();//9
+      obj.fn1();//27
+      alert(window.number);//8
+      alert(obj.number);//8
+</script>
+</body>
+</html>

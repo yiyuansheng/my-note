@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var str='ryan is not a good man';//ryan5 is6 not7 a8 good9 man10
+    var n=5;
+    str=str.replace(/\d[a-z]+\b/ig, function (kw) {
+        return kw+n++
+    });
+    console.log(str);
+</script>
+</body>
+</html>
