@@ -21,4 +21,13 @@
 
 6、setMooth() 在31号的时候，使用setMonth()方法会出问题
 	在使用setMonth()方法前，先设置日期的方式，即在d.setMonth(d.getMonth()-i)这句之前加上d.setDate(1)，成功解决问题。
+
+7、	阻止冒泡/蔓延（兼容模式）：
+	Function fun(e){
+			Window.event?window.event.cancelBubble=true : e.stopPropagation();
+	}
+	阻止默认行为：
+		Function fun(e){
+			Window.envnt? window.event.returnValue=false :  e.preventDefault();
+	}
 	
