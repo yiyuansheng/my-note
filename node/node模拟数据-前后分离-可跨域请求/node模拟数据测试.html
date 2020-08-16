@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>node模拟数据测试</title>
+</head>
+
+<body>
+  <div id="app">
+    <button onclick="getData('西游记')">查询列表指定数据</button>
+    <button onclick="getData()">查询所有数据列表</button>
+    <button onclick="addData()">添加数据</button>
+    <button onclick="delData()">删除数据</button>
+    <div id="content"></div>
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+  <script>
+    // 获取数据
+    function getData(bName) {
+      // 创建ajax实例
+      var http = new XMLHttpRequest()
+      //open---指定一个接口（url, method）
+      http.open('get', 'http://localhost:3000/api/articles/100' + (bName ? '?name=西游记' : ''))
+      // 发送
+      http.send()
+      // 监听接受数据
+      http.onreadystatechange = () => {
+        if (http.readyState === 4 && http.status === 200) {
+          content.innerHTML = http.responseText
+        }
+      }
+    }
+    // 添加数据
+    function addData() {
+      var http = new XMLHttpRequest()
+      http.open('post', 'http://localhost:3000/api/articles')
+      http.setRequestHeader("Content-Type", "application/json");//指定参数类型
+      http.send(JSON.stringify({
+        name: 'node入门'
+      }))
+      http.onreadystatechange = () => {
+        if (http.readyState === 4 && http.status === 200) {
+          content.innerHTML = http.responseText
+        }
+      }
+    }
+    // 删除数据
+    function delData() {
+      var http = new XMLHttpRequest()
+      http.open('delete', 'http://localhost:3000/api/articles')
+      http.setRequestHeader("Content-Type", "application/json");//指定参数类型
+      http.send(JSON.stringify({
+        index: 0
+      }))
+      http.onreadystatechange = () => {
+        if (http.readyState === 4 && http.status === 200) {
+          content.innerHTML = http.responseText
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

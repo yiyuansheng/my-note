@@ -30,4 +30,6 @@
 		Function fun(e){
 			Window.envnt? window.event.returnValue=false :  e.preventDefault();
 	}
+
+8、上传图片压缩，限制大小同时分辨率也要判断，否则图片容易失真
 	

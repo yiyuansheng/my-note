@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>node模拟数据测试</title>
+</head>
+
+<body>
+    <div id="app">
+        <button onclick="getData()">通过jsonp获取数据</button>
+        <div id="content"></div>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        // 获取数据
+        function getData() {
+            var script = document.createElement('script')
+            script.type = 'text/javascript'
+            script.src = 'http://localhost:3002/api/jsonp?callBack=callBack'
+            // 回调函数
+            callBack = function(res) {
+                console.log(res);
+                
+                content.innerHTML= res.data.join('、')
+            }
+            document.body.appendChild(script)
+        }
+    </script>
+</body>
+
+</html>
