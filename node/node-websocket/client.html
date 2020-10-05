@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+   <h1>WS客户端应用</h1>
+   <button id="tb1">连接ws服务器，并且接收消息</button>
+   <button id="tb2">向服务器发送一条消息</button>
+   <button id="tb3">断开到服务器的连接</button>
+   <script>
+     var socket = null;
+     tb1.onclick = function(){
+       //1:创建socket对象永久连接ws服务器
+       socket = new WebSocket("ws://127.0.0.1:9001");
+       //2:接收服务器发来的消息
+       socket.onmessage = function(e){
+         console.log("接收服务器的一个消息"+ e.data);
+       }
+     }//17:40--17:45
+     tb2.onclick = function(){
+       //向ws服务器发送一条消息
+       socket.send("I am Client-"+new Date().getTime());
+     }
+     tb3.onclick = function(){
+       //断开ws服务器的连接
+       socket.close();
+     }
+   </script>
+
+
+
+
+
+</body>
+</html>
