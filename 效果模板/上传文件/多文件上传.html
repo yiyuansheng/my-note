@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单文件上传</title>
+</head>
+<body>
+    单文件上传：
+    <input type="file" value="" id="file" accept="image/*"/ multiple>
+
+    <button id="upload">上传</button>
+    <div id="imgs"></div>
+    
+</body>
+<script>
+    var input = document.getElementById("file"); // 上传的文件
+    var upload = document.getElementById("upload") // 上传按钮
+    // 多文件本地预览
+    input.onchange = function() {
+        var imgs = document.getElementById('imgs') // 多文件预览
+        for(var i = 0; i < this.files.length; i++){
+            if(!(/^image\/.*$/i.test(this.files[0].type))) {
+                continue; // 不是图片，就跳出这次循环
+            }
+            
+            const img = document.createElement('img');
+            img.width = 200
+
+            // FileReader.readAsDataURL是异步执行（过一段时间）
+            // 获取文件对象
+            // var reader = new FileReader() // 是一种异步文件读取
+            // reader.readAsDataURL(this.files[i]) // 转成base64
+            // reader.onload = function(event) {
+            //     // console.log(event);
+            //     img.src = event.target.result
+            //     imgs.append(img)
+            // }
+
+            // createObjectURL是同步执行（立即的）
+            console.log(this.files[i])
+            var thisSrc = URL.createObjectURL(this.files[i]); // 静态方法会创建一个DOMString, 其中包含一个表示参数中给出的对象的URL
+            img.setAttribute('src', thisSrc)
+            img.onload=function() {
+                imgs.append(this);
+            }
+            URL.revokeObjectURL(thisSrc) // 释放内存
+        }
+    }
+    upload.onclick = function() {
+        var files = input.files ? input.files : [];
+        if(!files.length || !window.FileReader) {
+            console.log("浏览器不支持");
+            return false
+        }
+        // ajax
+        var fd = new FormData(); // 通过formData将文件转成二进制数据（流）
+
+        for(var i = 0; i < files.length; i++){
+            fd.append('files', files[i])
+        }
+        var request = new XMLHttpRequest()
+        request.open('post', 'http://139.196.42.209:8001/upload/multi');
+        request.send(fd);
+        request.onreadystatechange = function() {
+            if(request.readyState === 4 && request.status === 200) {
+                alert('上传成功')
+            }
+        }
+    }
+</script>
+</html>

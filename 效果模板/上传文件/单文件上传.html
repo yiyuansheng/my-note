@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单文件上传</title>
+</head>
+<body>
+    单文件上传：
+    <input type="file" value="" id="file" accept="image/*"/>
+    <img src="" id="myImage" alt="未选择图片" style="width: 200px;">
+    <button id="upload">上传</button>
+    
+</body>
+<script>
+    var input = document.getElementById("file"); // 上传的文件
+    var upload = document.getElementById("upload") // 上传按钮
+    var myImage = document.getElementById('myImage') // 预览图片
+    // 本地预览
+    input.onchange = function(e) {
+        var files = input.files ? input.files : [];
+        if(!files.length || !window.FileReader) {
+            console.log("浏览器不支持");
+            return false
+        }
+        // 获取文件对象
+        console.log(e)
+        var file = e.target.files[0]
+        var reader = new FileReader() // 是一种异步文件读取
+        reader.readAsDataURL(file) // 转成base64
+        reader.onload = function(event) {
+            // console.log(event);
+            myImage.src = event.target.result
+        }
+    }
+    upload.onclick = function() {
+        var files = input.files ? input.files : [];
+        if(!files.length || !window.FileReader) {
+            console.log("浏览器不支持");
+            return false
+        }
+        // ajax
+        var fd = new FormData(); // 通过formData将文件转成二进制数据（流）
+        fd.append('file', files[0]);
+        var request = new XMLHttpRequest()
+        request.open('post', 'http://139.196.42.209:8001/upload/single');
+        request.send(fd);
+        request.onreadystatechange = function() {
+            if(request.readyState === 4 && request.status === 200) {
+                alert('上传成功')
+            }
+        }
+    }
+</script>
+</html>
